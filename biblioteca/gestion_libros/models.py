@@ -1,6 +1,6 @@
 from django.db import models
 
-class libros(models.model):
+class libros(models.Model):
     codigo = models.CharField(primary_key=True, max_length=10, unique=10)
     titulo = models.CharField(max_length=100)
     libro = models.CharField(max_length=100)
