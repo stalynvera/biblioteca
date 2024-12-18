@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gestion_libros',
+    'corsheaders',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'biblioteca.urls'
@@ -126,3 +130,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:8000',  # Permitir solicitudes desde tu aplicación `tkinter`
+]
+CORS_ALLOW_METHODS = ['GET', 'POST', 'PUT', 'DELETE']  # Métodos permitidos
+CORS_ALLOW_HEADERS = ['Authorization', 'Content-Type']  # Headers permitidos
+CORS_ALLOW_CREDENTIALS = True  # Permitir credenciales si es necesario
+
+AUTHENTICATION_CLASSES = [
+    'rest_framework.authentication.TokenAuthentication',
+    'django.contrib.auth.backends.ModelBackend',  # O el backend que estés utilizando
+]
